@@ -5,12 +5,14 @@ from django.contrib.auth import login, logout, authenticate
 from homepage.models import MyUser
 from homepage.forms import LoginForm, SignupForm
 
+from custom_user.settings import AUTH_USER_MODEL
+
 # Create your views here.
 
 
 # @login_required
 def index(request):
-    return render(request, "index.html")
+    return render(request, "index.html", {"authusermodel": AUTH_USER_MODEL})
 
 
 def login_view(request):
@@ -33,7 +35,7 @@ def signup_view(request):
         if form.is_valid():
             data = form.cleaned_data
             new_user = MyUser.objects.create_user(
-                username=data.get("username"), password=data.get("password"), age=data.get("age"), bio=data.get("bio"), first_name=data.get("firstname"))
+                username=data.get("username"), password=data.get("password"), age=data.get("age"), homepage=data.get("homepage"), first_name=data.get("firstname"))
             login(request, new_user)
             return HttpResponseRedirect(reverse("homepage"))
 

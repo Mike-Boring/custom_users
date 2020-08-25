@@ -7,5 +7,5 @@ from django.db import models
 
 class MyUser(AbstractUser):
     age = models.IntegerField(blank=True, null=True)
-    bio = models.TextField(blank=True, null=True)
-    REQUIRED_FIELDS = ['first_name', 'age', 'bio']
+    homepage = models.URLField(blank=True, null=True)
+    REQUIRED_FIELDS = ['first_name', 'age', 'homepage']

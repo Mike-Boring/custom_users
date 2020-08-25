@@ -11,4 +11,4 @@ class SignupForm(forms.Form):
     password = forms.CharField(widget=forms.PasswordInput)
     firstname = forms.CharField(max_length=240)
     age = forms.IntegerField()
-    bio = forms.CharField(widget=forms.Textarea)
+    homepage = forms.URLField()
