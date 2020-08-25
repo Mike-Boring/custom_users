@@ -43,10 +43,6 @@ def signup_view(request):
     return render(request, "generic_form.html", {"form": form})
 
 
-def permission_error_view(request):
-    return HttpResponseRedirect(reverse("permissionerror"))
-
-
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect(reverse("homepage"))
